@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/gko/app/gexam/committed/Committy_login.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/gko/app/gexam/committed/com_fragment/StudentAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/gko/app/gexam/committed/com_fragment/StudentListFragment.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/gko/app/gexam/student/QRActivity.java" charset="UTF-8" />
-  </component>
-</project>

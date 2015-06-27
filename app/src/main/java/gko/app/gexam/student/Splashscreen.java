@@ -168,6 +168,7 @@ public class Splashscreen extends ActionBarActivity {
             objPD.setCancelable(false);
             objPD.setIndeterminate(false);
 
+
             objPD.show();
 
         }
@@ -201,7 +202,9 @@ public class Splashscreen extends ActionBarActivity {
 
             Intent intent = new Intent(Splashscreen.this, MainActivity.class);
             startActivity(intent);
+
             finish();
+            objPD.dismiss();
 
 
 

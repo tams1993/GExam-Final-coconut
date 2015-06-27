@@ -198,6 +198,8 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
+
+
                     }
                 });
 
@@ -384,11 +386,18 @@ public class MainActivity extends ActionBarActivity {
 
     private void SpinnerList() {
 
+        String spnDefault = "Choose Course";
+
         List<SpinnerObject> label = getAllLabelsSpinner();
         ArrayAdapter<SpinnerObject> spinnerArrayAdapter = new ArrayAdapter<SpinnerObject>(this, android.R.layout.simple_spinner_item, label);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
 
+        spinner.setPrompt(spnDefault);
+
+
         spinner.setAdapter(spinnerArrayAdapter);
+
+
 
 //        MyArrayAdapter adapter = new MyArrayAdapter(this, android.R.layout.simple_spinner_item, label);
 //        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -476,6 +485,7 @@ public class MainActivity extends ActionBarActivity {
         // looping through all rows and adding to list
         if ( cursor.moveToFirst () ) {
             do {
+
                 labels.add (new SpinnerObject(cursor.getInt(0),cursor.getString(10),cursor.getString(cursor.getColumnIndex("name")),cursor.getInt(2),cursor.getInt(3),cursor.getInt(cursor.getColumnIndex("subject_id")),cursor.getInt(cursor.getColumnIndex("teacher_id")),cursor.getString(cursor.getColumnIndex("class"))));
 
             } while (cursor.moveToNext());
@@ -724,6 +734,10 @@ public class MainActivity extends ActionBarActivity {
 
         Typeface myFont = Typeface.createFromAsset(getAssets(), "phetsarath.ttf");
 
+        Context context;
+        String[] objects;
+        String firstElement;
+        boolean isFirstTime;
 
         public MyArrayAdapter(Context context, int textViewResourceId, List<SpinnerObject> spinnerObjects) {
             super(context, textViewResourceId, spinnerObjects);
@@ -741,6 +755,12 @@ public class MainActivity extends ActionBarActivity {
             return view;
         }
 
+        @Override
+        public int getCount() {
+            // don't display last item. It is used as hint.
+            int count = super.getCount();
+            return count > 0 ? count - 1 : count;
+        }
     }
 
 

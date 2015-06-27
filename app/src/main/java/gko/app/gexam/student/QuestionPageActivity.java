@@ -1,7 +1,10 @@
 package gko.app.gexam.student;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -139,7 +142,7 @@ public class QuestionPageActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
 
-        if (exitCount == 3+1 ) {
+        if (exitCount == 3 ) {
 
 //            AlertDialoge.AlertExit(QuestionPageActivity.this, ALERT_EXIT_TITILE, ALERT_EXIT_MESSAGE);
 //            objCountDown.cancel();
@@ -269,8 +272,36 @@ public class QuestionPageActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                final AlertDialog.Builder builder1 = new AlertDialog.Builder(QuestionPageActivity.this);
+                builder1.setTitle("Finish?");
+                builder1.setMessage("ທ່ານຕ້ອງການສົ່ງຂໍ້ສອບແທ້ບໍ?");
+                builder1.setCancelable(false);
+                builder1.setPositiveButton("ສົ່ງຂໍ້ສອບ",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                new SimpleTask().execute();
+
+                                new SimpleTask().execute();
+
+
+                            }
+                        });
+
+                builder1.setNegativeButton("ປະຕິເສດ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
 
 
             }
